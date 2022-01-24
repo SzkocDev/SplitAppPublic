@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jGFsQ1LqWH7XO3SxG4siWlK8tSHwx37Vy69LEfYvMkWQmsh/xoTIgt/Sv9WuCd2+BACo6/MbqICQJuAeeJw2ZA==",
+  "dgSpecHash": "OqY26D61CuwBiD6zQZDFFg5dvXzPKqOihExqnkoJNX5ZhTPytGgqB056GL/qLDoyYcfzHHk0So+QezP/NBp0Kg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\milo\\source\\repos\\WPFUISplitApp\\WPFUISplitApp.csproj",
+  "projectFilePath": "C:\\Users\\milo\\source\\repos\\SplitAppPublic\\WPFUISplitApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\milo\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],

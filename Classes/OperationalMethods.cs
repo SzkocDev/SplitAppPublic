@@ -7,22 +7,18 @@ using Newtonsoft.Json;
 using System.IO;
 namespace WPFUISplitApp
 {
-    public class OperationalMethods
+    public static class OperationalMethods
     {
-        public List<Person> ListOfPeople { get; set; }
-        string sessionFileName = @"Session.json";
-        public OperationalMethods()
-        {
-            ListOfPeople = new List<Person>();
-        }
-        public void AddPerson(string name)
+        public static List<Person> ListOfPeople = new List<Person>();
+        static string sessionFileName = @"Session.json";
+        public static void AddPerson(string name)
         {
             if (ListOfPeople.Exists(x => x.Name == name) != true)
             {
                 ListOfPeople.Add(new Person(name));
             }
         }
-        public void CreateMockData()
+        public static void CreateMockData()
         {
 
             AddPerson("Adam");
@@ -46,7 +42,7 @@ namespace WPFUISplitApp
         }
 
         #region Session Managment(files)
-        public void ReadOrCreateSessionFile()
+        public static void ReadOrCreateSessionFile()
         {
             if (File.Exists(sessionFileName))
             {
@@ -57,7 +53,7 @@ namespace WPFUISplitApp
                 CreateFile();
             }            
         }
-        public void ReadFile()
+        public static void ReadFile()
         {
             var file = File.ReadAllLines(sessionFileName);
             foreach(string line in file)
@@ -66,7 +62,7 @@ namespace WPFUISplitApp
                 ListOfPeople.Add(person);
             }
         }
-        public void WriteToFile()
+        public static void WriteToFile()
         {
             string output = "";
             foreach(var person in ListOfPeople)
@@ -75,7 +71,7 @@ namespace WPFUISplitApp
             }
             File.WriteAllText((sessionFileName), output);
         }
-        void CreateFile()
+        static void CreateFile()
         {
             var file = File.Create(sessionFileName);
             file.Close();
@@ -83,17 +79,17 @@ namespace WPFUISplitApp
         #endregion
 
         #region ToolMethods
-        public decimal RoundToTwo(decimal value)
+        public static decimal RoundToTwo(decimal value)
         {
             return Math.Round(value, 2);
         }
-        public bool CheckIfDecimal(string value)
+        public static bool CheckIfDecimal(string value)
         {
             decimal result;
             return Decimal.TryParse(value, out result);
         }
 
-        public decimal AverageMoneySpentPerCapita()
+        public static decimal AverageMoneySpentPerCapita()
         {
             if (ListOfPeople.Count != 0)
             {
@@ -104,13 +100,13 @@ namespace WPFUISplitApp
                 return 0;
             }
         }
-        public decimal TotalMoneySpent()
+        public static decimal TotalMoneySpent()
         {
             return ListOfPeople.Sum(x => x.TotalContributions);
         }
         #endregion
 
-        public void SetCharges()
+        public static void SetCharges()
         {
             foreach (var person in ListOfPeople)
             {

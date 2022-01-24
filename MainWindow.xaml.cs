@@ -16,32 +16,28 @@ using System.Windows.Shapes;
 
 namespace WPFUISplitApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        OperationalMethods operationalMethods = new OperationalMethods();
         public MainWindow()
         {
             InitializeComponent();
            // operationalMethods.CreateMockData();
-            operationalMethods.ReadOrCreateSessionFile();
+            OperationalMethods.ReadOrCreateSessionFile();
             RefreshMainWindow();
         }
 
         public void RefreshMainWindow()
         {
-            DataOfPeople.ItemsSource = operationalMethods.ListOfPeople;
-            ChoosePeopleComboBox.ItemsSource = operationalMethods.ListOfPeople.Select(x => x.Name);
+            DataOfPeople.ItemsSource = OperationalMethods.ListOfPeople;
+            ChoosePeopleComboBox.ItemsSource = OperationalMethods.ListOfPeople.Select(x => x.Name);
 
-            AvgLabel.Content = $"AVG:{operationalMethods.AverageMoneySpentPerCapita()}";
-            operationalMethods.SetCharges();
+            AvgLabel.Content = $"AVG:{OperationalMethods.AverageMoneySpentPerCapita()}";
+            OperationalMethods.SetCharges();
 
             DataOfPeople.Items.Refresh();
             ChoosePeopleComboBox.Items.Refresh();
 
-            operationalMethods.WriteToFile();
+            OperationalMethods.WriteToFile();
         }
         #region Click Events
         private void AddPersonButton_Click(object sender, RoutedEventArgs e)
@@ -49,10 +45,10 @@ namespace WPFUISplitApp
             if(AddPersonTextBox.Text != "")
             {
                 string nameToAdd = AddPersonTextBox.Text;
-                int numberOfNameOccurences = operationalMethods.ListOfPeople.Where(element => element.Name == nameToAdd).Count();
+                int numberOfNameOccurences = OperationalMethods.ListOfPeople.Where(element => element.Name == nameToAdd).Count();
                 if (numberOfNameOccurences <= 0)
                 {
-                    operationalMethods.ListOfPeople.Add(new Person(nameToAdd));
+                    OperationalMethods.ListOfPeople.Add(new Person(nameToAdd));
                     AddPersonTextBox.Text = "";
                     RefreshMainWindow();
                 }
@@ -61,12 +57,12 @@ namespace WPFUISplitApp
 
         private void AddContributionButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ContributionValueTextBox.Text != "" && ChoosePeopleComboBox.Text != "" && operationalMethods.CheckIfDecimal(ContributionValueTextBox.Text))
+            if (ContributionValueTextBox.Text != "" && ChoosePeopleComboBox.Text != "" && OperationalMethods.CheckIfDecimal(ContributionValueTextBox.Text))
             {
                 decimal value = Convert.ToDecimal(ContributionValueTextBox.Text);
                 string description = Convert.ToString(ContributionDesctiptionTextBox.Text);
-                int personIndex = operationalMethods.ListOfPeople.FindIndex(x => x.Name == ChoosePeopleComboBox.Text);
-                operationalMethods.ListOfPeople[personIndex].AddContribution(value, description);
+                int personIndex = OperationalMethods.ListOfPeople.FindIndex(x => x.Name == ChoosePeopleComboBox.Text);
+                OperationalMethods.ListOfPeople[personIndex].AddContribution(value, description);
 
                 RefreshMainWindow();
 
@@ -79,8 +75,8 @@ namespace WPFUISplitApp
         {
             var owedPeople = new List<Person>();
             var inDebtPeople = new List<Person>();
-            owedPeople = operationalMethods.ListOfPeople.FindAll(x => x.Charge >= 0);
-            inDebtPeople = operationalMethods.ListOfPeople.FindAll(x => x.Charge < 0);
+            owedPeople = OperationalMethods.ListOfPeople.FindAll(x => x.Charge >= 0);
+            inDebtPeople = OperationalMethods.ListOfPeople.FindAll(x => x.Charge < 0);
 
             DisplayTransfersDialog displayTransfersDialog = new DisplayTransfersDialog(inDebtPeople, owedPeople);
             displayTransfersDialog.Show();
@@ -92,14 +88,14 @@ namespace WPFUISplitApp
             var person = listView as Person;
             var displayDetailsDialog = new DisplayDetailsDialog(person.ListOfContributions);
             displayDetailsDialog.ShowDialog();
-            var index = operationalMethods.ListOfPeople.FindIndex(x => x.Name == person.Name);
+            var index = OperationalMethods.ListOfPeople.FindIndex(x => x.Name == person.Name);
             if (displayDetailsDialog.RemovePerson == false)
             {
-                operationalMethods.ListOfPeople[index].ChangeListOfContributions(displayDetailsDialog.Contributions);
+                OperationalMethods.ListOfPeople[index].ChangeListOfContributions(displayDetailsDialog.Contributions);
             }
             else
             {
-                operationalMethods.ListOfPeople.RemoveAt(index);
+                OperationalMethods.ListOfPeople.RemoveAt(index);
             }
             RefreshMainWindow();
         }

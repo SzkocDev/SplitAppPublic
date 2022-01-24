@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\milo\source\repos\SplitAppPublic\obj\Debug\netcoreapp3.1\
+C:\Users\milo\source\repos\SplitAppPublic\obj\Release\netcoreapp3.1\
 WPFUISplitApp
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\milo\source\repos\SplitAppPublic\App.xaml
 3-1032453555
 
@@ -16,5 +16,5 @@ C:\Users\milo\source\repos\SplitAppPublic\App.xaml
 1931602939212
 DisplayDetailsDialog.xaml;DisplayTransfersDialog.xaml;MainWindow.xaml;
 
-False
+True
 

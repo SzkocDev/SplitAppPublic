@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\milo\\source\\repos\\WPFUISplitApp\\WPFUISplitApp.csproj": {}
+    "C:\\Users\\milo\\source\\repos\\SplitAppPublic\\WPFUISplitApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\milo\\source\\repos\\WPFUISplitApp\\WPFUISplitApp.csproj": {
+    "C:\\Users\\milo\\source\\repos\\SplitAppPublic\\WPFUISplitApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\milo\\source\\repos\\WPFUISplitApp\\WPFUISplitApp.csproj",
+        "projectUniqueName": "C:\\Users\\milo\\source\\repos\\SplitAppPublic\\WPFUISplitApp.csproj",
         "projectName": "WPFUISplitApp",
-        "projectPath": "C:\\Users\\milo\\source\\repos\\WPFUISplitApp\\WPFUISplitApp.csproj",
+        "projectPath": "C:\\Users\\milo\\source\\repos\\SplitAppPublic\\WPFUISplitApp.csproj",
         "packagesPath": "C:\\Users\\milo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\milo\\source\\repos\\WPFUISplitApp\\obj\\",
+        "outputPath": "C:\\Users\\milo\\source\\repos\\SplitAppPublic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\milo\\AppData\\Roaming\\NuGet\\NuGet.Config",
